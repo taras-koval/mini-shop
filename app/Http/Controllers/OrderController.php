@@ -2,55 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderStatus;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function create(Product $product)
     {
-        return Order::all();
+        return view('order.create', compact('product'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'product_id' => ['required'],
-            'customer_name' => ['required'],
-            'customer_email' => ['nullable', 'email', 'max:254'],
-            'customer_phone' => ['required'],
-            'comment' => ['nullable'],
-            'status' => ['required'],
+        $validatedData = $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'customer_name' => 'required',
+            'customer_email' => 'required|email',
+            'customer_phone' => 'nullable',
+            'comment' => 'required|min:10',
         ]);
 
-        return Order::create($request->validated());
-    }
+        $validatedData['status'] = OrderStatus::New;
 
-    public function show(Order $order)
-    {
-        return $order;
-    }
+        Order::create($validatedData);
 
-    public function update(Request $request, Order $order)
-    {
-        $request->validate([
-            'product_id' => ['required'],
-            'customer_name' => ['required'],
-            'customer_email' => ['nullable', 'email', 'max:254'],
-            'customer_phone' => ['required'],
-            'comment' => ['nullable'],
-            'status' => ['required'],
-        ]);
-
-        $order->update($request->validated());
-
-        return $order;
-    }
-
-    public function destroy(Order $order)
-    {
-        $order->delete();
-
-        return response()->json();
+        return view('order.thank-you');
     }
 }
