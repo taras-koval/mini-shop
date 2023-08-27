@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
