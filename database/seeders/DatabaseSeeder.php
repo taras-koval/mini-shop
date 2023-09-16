@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        echo "Seeding user" . PHP_EOL;
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
@@ -22,7 +23,10 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        echo "Seeding products" . PHP_EOL;
         Product::factory(20)->create();
-        Order::factory(10)->create();
+
+        echo "Seeding orders" . PHP_EOL;
+        Order::factory(20)->create();
     }
 }
