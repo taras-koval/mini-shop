@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\OrderStatus;
+use App\Enums\OrderStatusEnum;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class OrderController extends Controller
             'comment' => 'required|min:10',
         ]);
 
-        $validatedData['status'] = OrderStatus::New;
+        $validatedData['status'] = OrderStatusEnum::NEW;
 
         Order::create($validatedData);
 
