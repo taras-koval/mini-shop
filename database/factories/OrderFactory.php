@@ -6,7 +6,6 @@ use App\Enums\OrderStatusEnum;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 class OrderFactory extends Factory
 {
@@ -21,8 +20,8 @@ class OrderFactory extends Factory
             'customer_phone' => fake()->phoneNumber(),
             'comment' => fake()->sentence(),
             'status' => fake()->randomElement(OrderStatusEnum::cases()),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

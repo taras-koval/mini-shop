@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class ProductFactory extends Factory
@@ -22,8 +21,8 @@ class ProductFactory extends Factory
             'image' => fake()->imageUrl(1000, 500),
             'is_active' => fake()->boolean(),
             'price' => fake()->randomFloat(2, 10, 100),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

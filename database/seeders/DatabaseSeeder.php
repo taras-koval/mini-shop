@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         echo "Seeding products" . PHP_EOL;
-        Product::factory(20)->create();
+        Product::factory(40)->create();
 
         echo "Seeding orders" . PHP_EOL;
-        Order::factory(20)->create();
+        Order::factory(60)->create();
     }
 }
