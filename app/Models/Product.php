@@ -32,4 +32,13 @@ class Product extends Model
         );
     }
 
+    public function getImage()
+    {
+        if (str_starts_with($this->image, 'http')) {
+            return $this->image;
+        }
+
+        return '/storage/' . $this->image;
+    }
+
 }

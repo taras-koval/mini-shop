@@ -5,7 +5,7 @@
         <div class="w-full md:w-1/2 mb-8 md:mb-0 md:mr-8">
             <div class="bg-white p-8 shadow-md rounded-lg">
                 <h2 class="text-2xl font-semibold mb-4">{{ $product->name }}</h2>
-                <img src="{{ $product->image }}" class="w-full mb-4" alt="{{ $product->name }}">
+                <img src="{{ $product->getImage() }}" class="w-full mb-4" alt="{{ $product->name }}">
                 <p class="text-gray-800 mb-4">{{ $product->description }}</p>
                 <p class="text-gray-800 font-semibold mb-4">Price: ${{ $product->price }}</p>
             </div>

@@ -6,7 +6,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         @foreach ($products as $product)
             <div class="bg-white p-4 shadow-md rounded-lg">
-                <img src="{{ $product->image }}" class="w-full object-cover" alt="{{ $product->name }}">
+                <img src="{{ $product->getImage() }}" class="w-full object-cover" alt="{{ $product->name }}">
                 <div class="p-4">
                     <h3 class="text-lg font-semibold mb-2">{{ $product->name }}</h3>
                     <p class="text-gray-600 mb-4">{{ $product->description }}</p>
