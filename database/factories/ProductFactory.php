@@ -12,7 +12,7 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
-        $name = fake()->unique()->words(3, true);
+        $name = ucwords(fake()->unique()->words(3, true));
 
         return [
             'name' => $name,
