@@ -22,3 +22,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 Route::get('/orders/create/{product}', [OrderController::class, 'create'])->name('order.create');
 Route::post('/orders/create/{product}', [OrderController::class, 'store'])->name('order.store');
+
+
+Route::get('/products/test/filter', [ProductController::class, 'testFilters'])->name('products.test');
+Route::get('/orders/test/filter', [OrderController::class, 'testFilters'])->name('orders.test');

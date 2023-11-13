@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\ProductFilter;
+use App\Traits\IsFilterable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, IsFilterable;
 
     protected $fillable = [
         'name',
@@ -19,6 +21,8 @@ class Product extends Model
         'is_active',
         'price',
     ];
+
+    protected string $filterClass = ProductFilter::class;
 
     public function getRouteKeyName(): string
     {
