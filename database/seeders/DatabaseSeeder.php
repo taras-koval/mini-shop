@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -24,9 +23,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         echo "Seeding products" . PHP_EOL;
-        Product::factory(40)->create();
+        Product::factory(40)->withDateInPast()->create();
 
         echo "Seeding orders" . PHP_EOL;
-        Order::factory(60)->create();
+        Order::factory(60)->withDateInPast()->create();
     }
 }

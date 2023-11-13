@@ -25,4 +25,14 @@ class ProductFactory extends Factory
             'updated_at' => now(),
         ];
     }
+
+    public function withDateInPast(int $daysAgo = 30): ProductFactory
+    {
+        return $this->state(function () use ($daysAgo) {
+            return [
+                'created_at' => now()->subDays($daysAgo),
+                'updated_at' => now()->subDays($daysAgo),
+            ];
+        });
+    }
 }

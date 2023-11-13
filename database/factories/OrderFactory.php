@@ -14,7 +14,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_id' => Product::inRandomOrder()->first(),
+            'product_id' => Product::inRandomOrder()->first() ?? Product::factory(),
             'customer_name' => fake()->name(),
             'customer_email' => fake()->email(),
             'customer_phone' => fake()->phoneNumber(),
@@ -23,5 +23,15 @@ class OrderFactory extends Factory
             'created_at' => now(),
             'updated_at' => now(),
         ];
+    }
+
+    public function withDateInPast(int $daysAgo = 30): OrderFactory
+    {
+        return $this->state(function () use ($daysAgo) {
+            return [
+                'created_at' => now()->subDays($daysAgo),
+                'updated_at' => now()->subDays($daysAgo),
+            ];
+        });
     }
 }
