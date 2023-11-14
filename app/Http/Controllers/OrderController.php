@@ -30,4 +30,11 @@ class OrderController extends Controller
 
         return view('order.thank-you');
     }
+
+    public function testFilters(Request $request)
+    {
+        $orders = Order::filter($request)->get();
+
+        return response()->json($orders);
+    }
 }
